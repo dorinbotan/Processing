@@ -15,6 +15,10 @@ class Box {
       for(int y = -1; y < 2; y++) {
         for(int z = -1; z < 2; z++) {
           float newR = r / 3;
+  
+          int sum = abs(x) + abs(y) + abs(z);
+          //if(x != y && x != z && y != z)
+          if(sum > 1)
           boxes.add(new Box(pos.x + x * newR, pos.y + y * newR, pos.z + z * newR, newR));
         }
       }
@@ -26,6 +30,8 @@ class Box {
   void show() {
     pushMatrix();
     translate(pos.x, pos.y, pos.z);
+    noStroke();
+    fill(255);
     box(r);
     popMatrix();
   }
